@@ -1,0 +1,33 @@
+{
+  "name": "websocket-presentation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-ws": "^3.0.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-scripts": "1.1.4",
+    "axios": "^0.18.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/socket": {
+      "target": "ws://localhost:8080",
+      "ws": true
+    },
+    "/messages": {
+        "target": "http://localhost:8080",
+        "http": true
+    },
+    "/post": {
+        "target": "http://localhost:8080",
+        "http": true
+    }
+  }
+}
