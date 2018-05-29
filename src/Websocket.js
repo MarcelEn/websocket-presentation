@@ -8,7 +8,7 @@ class Websocket extends Component {
 
         const protocol = window.location.protocol === 'http:' ? 'ws:' : 'wss:';
 
-        const socket = new WebSocket(`${protocol}//${window.location.host}/socket`);
+        const socket = new WebSocket(`${protocol}//${window.location.host}/websocket`);
 
         socket.onopen = () => console.log("connected");
 

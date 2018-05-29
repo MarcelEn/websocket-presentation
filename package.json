@@ -1,34 +1,39 @@
 {
-  "name": "websocket-presentation",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "cookie-parser": "^1.4.3",
-    "express": "^4.16.3",
-    "express-ws": "^3.0.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "proxy": {
-    "/socket": {
-      "target": "ws://localhost:8080",
-      "ws": true
+    "name": "websocket-presentation",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "cookie-parser": "^1.4.3",
+        "express": "^4.16.3",
+        "express-ws": "^3.0.0",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-scripts": "1.1.4",
+        "sse-express": "^1.0.2"
     },
-    "/messages": {
-      "target": "http://localhost:8080",
-      "http": true
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
     },
-    "/post": {
-      "target": "http://localhost:8080",
-      "http": true
+    "proxy": {
+        "/websocket": {
+            "target": "ws://localhost:8080",
+            "ws": true
+        },
+        "/sse": {
+            "target": "http://localhost:8080",
+            "http": true
+        },
+        "/messages": {
+            "target": "http://localhost:8080",
+            "http": true
+        },
+        "/post": {
+            "target": "http://localhost:8080",
+            "http": true
+        }
     }
-  }
 }

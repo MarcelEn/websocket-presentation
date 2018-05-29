@@ -40,7 +40,7 @@ class HttpRequest extends Component {
     render() {
         return (
             <div>
-                <h1>HttpRequest</h1>
+                <h1>XMLHttpRequest</h1>
                 <MessageHandler
                     messages={this.state.messages}
                     handleChange={this.handleChange}
