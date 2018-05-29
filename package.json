@@ -19,7 +19,7 @@
         "eject": "react-scripts eject"
     },
     "proxy": {
-        "/web_socket": {
+        "/socket": {
             "target": "ws://localhost:8080",
             "ws": true
         },

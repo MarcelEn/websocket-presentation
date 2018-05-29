@@ -8,7 +8,7 @@ class Websocket extends Component {
 
         const protocol = window.location.protocol === 'http:' ? 'ws:' : 'wss:';
 
-        const socket = new WebSocket(`${protocol}//${window.location.host}/web_socket`);
+        const socket = new WebSocket(`${protocol}//${window.location.host}/socket`);
 
         socket.onopen = () => console.log("connected");
 
@@ -56,7 +56,7 @@ class Websocket extends Component {
     render() {
         return (
             <div>
-                <h1>Websocket</h1>
+                <h1>WebSocket</h1>
                 <button onClick={this.closeSocket}>
                     close Socket
                 </button>

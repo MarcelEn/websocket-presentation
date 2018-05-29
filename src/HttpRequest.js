@@ -19,7 +19,6 @@ class HttpRequest extends Component {
         const that = this;
         axios.get("/messages?q=" + that.state.messages.length)
             .then(response => {
-                console.log(response.data)
                 that.setState({messages: [...that.state.messages, ...response.data]})
                 that.getMessagesLoop();
             })

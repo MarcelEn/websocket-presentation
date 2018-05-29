@@ -81,7 +81,7 @@ const broadcastToWebSockets = message => {
     })
 }
 
-app.ws('/websocket', (ws, req) => {
+app.ws('/socket', (ws, req) => {
     webSockets.push(ws);
     console.log(req.cookies["useless-random-cookie"])
     ws.on('message', message => {
