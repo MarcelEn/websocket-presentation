@@ -1,15 +1,20 @@
-const express = require("express");
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 require('express-ws')(app);
 
 let messages = [];
 
+app.use(cookieParser());
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    //console.log(req);
+    if(!req.cookies["useless-random-cookie"]){
+        res.cookie("useless-random-cookie", "Hi_ich_bin_total_nutzlos");
+    }
     next();
 })
 
@@ -67,7 +72,7 @@ const broadcastToSockets = message => {
 
 app.ws('/socket', (ws, req) => {
     sockets.push(ws);
-
+    console.log(req.cookies["useless-random-cookie"])
     ws.on('message', message => {
         addMessage(message)
     })
