@@ -25,14 +25,14 @@ class App extends Component {
             default:
                 return (
                     <div>
-                        <button onClick={() => this.setState({ mode: WEBSOCKET })}>
-                            Websocket
-                        </button>
                         <button onClick={() => this.setState({ mode: HTTP_REQUEST })}>
                             XMLHttpRequest
                         </button>
                         <button onClick={() => this.setState({ mode: USE_SSE })}>
                             SSE
+                        </button>
+                        <button onClick={() => this.setState({ mode: WEBSOCKET })}>
+                            WebSocket
                         </button>
                     </div>
                 )
