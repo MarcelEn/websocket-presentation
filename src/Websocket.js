@@ -23,6 +23,7 @@ class Websocket extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleIncomingMessage = this.handleIncomingMessage.bind(this);
+        this.closeSocket= this.closeSocket.bind(this);
     }
 
     handleSubmit() {
@@ -49,11 +50,16 @@ class Websocket extends Component {
             default:
         }
     }
-
+    closeSocket(){
+        this.state.socket.close(1000, "ich hab keine lust mehr.");
+    }
     render() {
         return (
             <div>
                 <h1>Websocket</h1>
+                <button onClick={this.closeSocket}>
+                    close Socket
+                </button>
                 <MessageHandler
                     messages={this.state.messages}
                     handleChange={this.handleChange}
