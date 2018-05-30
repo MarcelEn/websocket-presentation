@@ -23,6 +23,14 @@
             "target": "ws://localhost:8080",
             "ws": true
         },
+        "/socketping": {
+            "target": "ws://localhost:8080",
+            "ws": true
+        },
+        "/xhrping": {
+            "target": "http://localhost:8080",
+            "http": true
+        },
         "/sse": {
             "target": "http://localhost:8080",
             "http": true

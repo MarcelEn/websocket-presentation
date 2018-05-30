@@ -11,6 +11,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+    console.log(req.cookies["useless-random-cookie"])
     if (!req.cookies["useless-random-cookie"]) {
         res.cookie("useless-random-cookie", "Hi_ich_bin_total_nutzlos");
     }
@@ -83,7 +84,6 @@ const broadcastToWebSockets = message => {
 
 app.ws('/socket', (ws, req) => {
     webSockets.push(ws);
-    console.log(req.cookies["useless-random-cookie"])
     ws.on('message', message => {
         addMessage(message)
     })
@@ -113,6 +113,24 @@ app.get('/sse', sseExpress, function (req, res) {
     res.sse('init', messages);
     sseConnections.push(res);
 });
+
+/**********************************************************
+***********************************************************
+ *   Benchmark:
+ * **********************************************************
+ ***********************************************************/
+
+app.get('/xhrping', function (req, res) {
+    res.send("pong");
+});
+
+
+app.ws('/socketping', (ws, req) => {
+    ws.on('message', message => {
+        ws.send("pong");
+    })
+})
+
 
 /**********************************************************/
 
