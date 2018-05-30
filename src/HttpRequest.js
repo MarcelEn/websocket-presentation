@@ -19,14 +19,16 @@ class HttpRequest extends Component {
         const that = this;
         axios.get("/messages?q=" + that.state.messages.length)
             .then(response => {
-                that.setState({messages: [...that.state.messages, ...response.data]})
+                that.setState({ messages: [...that.state.messages, ...response.data] })
                 that.getMessagesLoop();
             })
-            .catch(e => that.getMessagesLoop());
+            .catch(e => { 
+                if (!e.response) that.getMessagesLoop() 
+            });
     }
 
     handleSubmit() {
-        axios.post("/post", {text: this.state.text})
+        axios.post("/post", { text: this.state.text })
         this.setState({ text: "" });
     }
 
