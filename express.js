@@ -64,7 +64,7 @@ app.get("/messages", (req, res, next) => {
 
 app.post("/post", (req, res, next) => {
     addMessage(req.body.text);
-    res.send(200);
+    res.sendStatus(200);
 })
 
 
