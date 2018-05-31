@@ -19,10 +19,6 @@ class Benchmark extends Component {
             case "ws":
                 this.wsLoop();
                 break;
-            case "both":
-                this.xhrLoop();
-                this.wsLoop();
-                break;
             default:
         }
     }
@@ -52,52 +48,63 @@ class Benchmark extends Component {
 
     render() {
         const time = new Date().valueOf() - this.state.start
-        return (
-            <div>
-                <h1>
-                    Benchmark
-                </h1>
-                <table border="1px">
-                    <thead>
-                        <tr>
-                            <td>
-                                Method
+        if (this.props.type === "ws") {
+            return (
+                <div>
+                    <h1>WebSocket</h1>
+                    <table border="1px">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Count
                             </td>
-                            <td>
-                                Count
+                                <td>
+                                    Ping
                             </td>
-                            <td>
-                                Time Per Ping
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {this.state.ws}
+                                </td>
+                                <td>
+                                    {time / this.state.ws}ms
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h1>XHR</h1>
+                    <table border="1px">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Count
                             </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                XHR:
+                                <td>
+                                    Ping
                             </td>
-                            <td>
-                                {this.state.xhr}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {this.state.xhr}
+                                </td>
+                                <td>
+                                    {time / this.state.xhr}ms
                             </td>
-                            <td>
-                                {time / this.state.xhr}ms
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                WebSocket:
-                            </td>
-                            <td>
-                                {this.state.ws}
-                            </td>
-                            <td>
-                                {time / this.state.ws}ms
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        )
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
     }
 }
 

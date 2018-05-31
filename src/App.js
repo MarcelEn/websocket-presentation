@@ -51,9 +51,6 @@ class App extends Component {
                         <button onClick={() => this.setState({mode: BENCHMARK, type: "ws"})}>
                             WebSocket
                         </button>
-                        <button onClick={() => this.setState({mode: BENCHMARK, type: "both"})}>
-                            both
-                        </button>
                         
                     </div>
                 )
