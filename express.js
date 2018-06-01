@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    console.log(req.cookies["useless-random-cookie"])
+    console.log(req.originalUrl, req.cookies["useless-random-cookie"])
     if (!req.cookies["useless-random-cookie"]) {
         res.cookie("useless-random-cookie", "Hi_ich_bin_total_nutzlos");
     }
